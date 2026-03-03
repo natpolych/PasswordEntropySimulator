@@ -1,8 +1,17 @@
 import math
 import string 
 
-#user input = password
-password = input("Enter Password: ")
+passwordExists = False
+
+while not passwordExists:
+    #user input = password
+    password = input("Enter Password: ")
+
+    if not password:
+        print("Password is empty.")
+    else: 
+        passwordExists = True
+        
 
 characterSets = {
     "lowercase": string.ascii_lowercase, 
@@ -12,7 +21,8 @@ characterSets = {
 }
 
 poolSize = 0
-for name, characters in characterSets.items():
+#making sure the password provided by the user uses at least one charachter from each category
+for characters in characterSets.values():
     if any(c in characters for c in password):
         poolSize += len(characters)
 
