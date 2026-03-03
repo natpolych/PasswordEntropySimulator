@@ -1,34 +1,29 @@
 import math
 import string 
 
-passwordExists = False
-
-while not passwordExists:
-    #user input = password
-    password = input("Enter Password: ")
-
-    if not password:
-        print("Password is empty.")
-    else: 
-        passwordExists = True
+while True:                                                                     #Loop to make sure that the password isn't empty
+    password = input("Enter Password: ")                                        
+    if password:
+        break
+    print("Password is empty.")
+    
         
 
-characterSets = {
-    "lowercase": string.ascii_lowercase, 
-    "uppercase": string.ascii_uppercase,
-    "digits": string.digits,
-    "punctuation": string.punctuation
+characterSets = {                                                               #Dictionary that includes different categories of characters
+    "lowercase": string.ascii_lowercase,                                        #abcdefghijklmnopqrstuvwxyz
+    "uppercase": string.ascii_uppercase,                                        #ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    "digits": string.digits,                                                    #0123456789
+    "punctuation": string.punctuation                                           #!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 }
 
-poolSize = 0
-#making sure the password provided by the user uses at least one charachter from each category
-for characters in characterSets.values():
-    if any(c in characters for c in password):
-        poolSize += len(characters)
+poolSize = 0                                                                    #Amount of possible characters
+for characters in characterSets.values():                                       
+    if any(c in characters for c in password):                                  #If the password contains at least one character from this category (lowercase, uppercase, digits, punctuation), then
+        poolSize += len(characters)                                             #We add the whole category's size in the poolSize
 
-entropy = len(password) * math.log2(poolSize) if poolSize > 0 else 0 
+entropy = len(password) * math.log2(poolSize) if poolSize > 0 else 0            #Calculating theoretical maximum entropy
 
-strength = (
+strength = (                                                                    #Password's strength based on the entropy
     "Extremely Weak" if entropy < 20 else
     "Very Weak" if entropy < 30 else
     "Weak" if entropy < 40 else
