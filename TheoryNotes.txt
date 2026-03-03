@@ -1,0 +1,93 @@
+What is Hashing?
+
+	email id + password --------> servers *
+	
+	*3 alternatives to store passwords:
+		1. plaintext: easy to gather information from, no security ( can be reused with other websites), website owner can read personal data
+		2. encrypted: decryption key stored on server (vulnerability)
+		3. hashed: hashing will not reveal passwords, no encryption key needed, website owners can't read your data
+
+
+	Hashing is the process of scrambling a piece of information or data beyond recognition. They are designed to be irreversible. We pass the input through a hash function to calculate 	the Hash Value or Digest.
+
+
+	original data (password) + hash function ----------> hash Value / Digest
+
+	
+
+	Hash Functions: -Mathematical operations to be carried out on two blocks of data
+			-Both blocks are created by dividing the initial input into equal parts
+			-Irreversible by design
+			-Can be carried out multiple times, but the final digest must be consistent for the same input
+
+
+	MD5 algorithm --> 128 bits (Digest size) 		& 		SHA-256 algorithm --> 256 bits
+
+	Hash function must be fast, but not instantaneous (very quick algorithms can be tested rigorously for brute force attacks, and with enough brute force attacks, the entire algorithm 		can be cracked)
+
+	Hashing guidelines: If a single character changes, a substantial portion of the digest must change (= as many unique hashes as possible)
+
+	Prevent Hash Collision (when there are two exactly same hash values/digests): same password = same digest ----> salting can help prevent collisions * 
+			
+			* salting is the process of adding a random keyword to the end of the input (the random keyword added -> salt/salt value), the salt is unique for each user in the 			database
+
+			Peppering is the process of adding the same random value at the end of a plaintext, since it doesn't change per user the random value need not be stored on the 			server. In a case of data breach the pepper value is safe from further exploitation
+
+
+
+What is Entropy?
+		
+	Entropy tells us: "How hard it would be for an attacker to guess or brute-force a password"
+	
+	The higher the entropy -> the more possible combinations -> the longer it takes to crack
+	
+			Entropy = (password length) * log_2(character set size), 
+
+			(password length) = number of characters and 
+			(character set size) = how many possible characters could be used (lower case = 26, upper case = 26, numbers = 10, symbols ~ 32 -> all ~94)
+	
+
+	20 bits - cracked instantly	40 bits - cracked in minutes	60 bits - could take years	80+ bits - practically infeasible
+
+	== Entropy is a measure of how unpredictable a password is, expressed in bits. Higher entropy means more possible combinations and greater resistance to brute - force attacks.
+
+
+
+What is a Brute Force Attack?
+
+	A brute force attack is when an attacker tries every possible password combination until the correct one is found.
+	(Try -> Fail -> Try -> Fail -> Repeat... until success)
+
+	More Entropy -> more combinations -> longer brute-force time
+
+	1. Pure Brute Force: Tries every possible combination
+	2. Dictionary Attack: Tries commonly used passwords, e.g. "password", "12345", "qwerty", "Password123"
+	3.Hybrid Attack: Dictionary + small variations, e.g. "password1", "Password!", "Password2026"
+
+	== A brute force attack is a method of cracking passwords by systematically trying every possible combination until the correct one is found
+	
+
+
+Shannon Entropy:
+	It measures the average uncertainty (or information content) of a random variable -> how predictable something is
+
+	H = - Σp(x)log_2p(x), where p(x) = probability of each possible outcome and log_2 gives results in bits
+
+	In password security: every character is equally likely and every position is independent.
+	If we have N possible characters: 		H = log_2(N) 	per character
+	So if our password has length L then: 		H = L * log_2(N)
+
+	==It quantifies how unpredictable a password is, expressed in bits
+
+
+
+Password Search Space:
+	The search space is: The total number of possible password combinations an attacker must try
+
+	If character set size = N 		and		password length = L, 		then 		(Search Space) = N^L
+
+	Entropy (bits) = log_2(Search Space)
+	|
+	--> Entropy tells us how many Yes or No questions it would take to guess the password
+
+	==The total number of possible password combinations that an attacker must try during a brute-force attack, calculated as N^L	
