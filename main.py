@@ -1,11 +1,12 @@
 from entropy import ShannonEntropy, entropyCalc, strengthCategory
 from bruteForce import bruteForceTime, timeConvert, multiSpeedBFA
 from visualizer import graphVisualizer
+from hashDemo import SHA256Hash, bcryptHash
 
 def main():
 
     passwords = []
-    print("--------------------PASSWORD SECURITY SIMULATOR--------------------")
+    print("----------------------------------------PASSWORD SECURITY SIMULATOR----------------------------------------")
     print("Enter passwords (Write password and press Enter. To finish press Enter on empty input)")
 
     while True:
@@ -17,18 +18,28 @@ def main():
         print("Password is empty")
         return
 
-    print("\n-----------PASSWORD ANALYSIS-----------\n")
+    print("\n----------------------PASSWORD ANALYSIS----------------------\n")
     for userPassword in passwords:
         theoretical = entropyCalc(userPassword)
         entropyPerCharacter, totalEntropy = ShannonEntropy(userPassword)
 
-        print(f"Password: {userPassword}")
+        print(f"-------Password: {userPassword}")
+        print("\n")
         print(f"{'Theoretical Entropy:':<22}{round(theoretical,2):<10}bits  |  "f"{'Strength:':<10}{strengthCategory(theoretical)}")
         print(f"{'Shannon Entropy:':<22}{totalEntropy:<10}bits  |  "f"{'Strength:':<10}{strengthCategory(totalEntropy)}")
+        print("\n")
 
         times = multiSpeedBFA(userPassword)
         for attacker, t in times.items():
             print(f"{f'Brute-Force Time Against {attacker}:':<22}{t}")
+        print("\n")
+        sha = SHA256Hash(userPassword)
+        print(f"SHA-256: {sha}")
+        b1 = bcryptHash(userPassword)
+        b2 = bcryptHash(userPassword)
+
+        print(f"bcrypt hash 1: {b1}")
+        print(f"bcrypt hash 2: {b2}")
 
         print("\n")
 
