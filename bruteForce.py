@@ -26,3 +26,18 @@ def timeConvert(seconds):
     elif hours >= 1: return f"{hours:.2f} hours"
     elif minutes >= 1: return f"{minutes:.2f} minutes"
     else: return f"{seconds:.2f} seconds"
+
+def multiSpeedBFA(password, return_seconds = False):
+    """
+    Calculating crack time for different attacker speeds
+    returns: human-readable time
+    """
+
+    speeds = {"Basic Attacker (1e6/sec)": 1e6, "GPU Attacker (1e9/sec)": 1e9, "Cluster Attacker (1e12/sec)": 1e12}
+    results = {}
+
+    for label, speed in speeds.items():
+        seconds = bruteForceTime(password, speed)
+        results[label] = seconds if return_seconds else timeConvert(seconds)
+
+    return results
