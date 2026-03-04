@@ -3,14 +3,10 @@ from entropy import entropyCalc
 def bruteForceTime(password, guessPerSec = 1e9):
     """
     Here we are going to estimate the time it takes to crack a password by brute-force attack, using entropy
-    
     combinations = 2 ^ entropy
     """
-
     entropy = entropyCalc(password)
-
     combinations = 2 ** entropy
-
     seconds = combinations / guessPerSec
 
     return seconds
@@ -30,13 +26,3 @@ def timeConvert(seconds):
     elif hours >= 1: return f"{hours:.2f} hours"
     elif minutes >= 1: return f"{minutes:.2f} minutes"
     else: return f"{seconds:.2f} seconds"
-
-if __name__ == "__main__":
-    password = input("Enter Password: ")
-
-    speeds = {"Basic Attacker (1e6/sec)": 1e6, "GPU Attacker (1e9/sec)": 1e9, "Cluster Attacker (1e12/sec)": 1e12}
-
-    for label, speed in speeds.items():
-        seconds = bruteForceTime(password, speed)
-        print(f"\n{label}")
-        print("Estimated crack time: ", timeConvert(seconds))
