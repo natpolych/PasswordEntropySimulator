@@ -1,6 +1,12 @@
 # PasswordEntropySimulator
 A Python tool that calculates password entropy and simulates brute-force attacks
 
+-main.py:
+
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+
 -entropy.py: 
 
     Description: Makes sure that the password isn't empty, figures out which character categories are being used (lowercase, uppercase, digits, punctuation), calcualtes theoretical password entropy ( (password length) * log_2(character pool size) ) and classifies password's strength.
