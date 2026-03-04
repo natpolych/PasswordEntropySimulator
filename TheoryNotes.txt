@@ -113,3 +113,21 @@ Secure Hash Algorithm 256-bit (SHA-256):
 	•Fast to Compute			| 				Hash - computationally inexpensive
 	•Pre-image Resistant		| 				Virtually impossible to reverse the input from the hash
 	•Collision Resistant		| 				Impossible for 2 different inputs to produce the same hash
+
+
+bcrypt:
+	|
+	-> A password hashing function. bcrypt is slow by design and includes automatic salting
+
+	Key Features:
+	1.Automated Salting:
+		•Every time you hash a password, bcrypt generates a unique random salt.
+		•Two users + same password -> different hashes
+	2.Adjustable cost factor:
+		•'rounds' and 'cost' parameter
+		•more rounds -> slower to compute -> more Secure
+		•usually 12 rounds by default
+	3.Slow and memory-intensive:
+		•Its intentionally slow (=slows down attackers)
+	4.One-Way:
+		•Cannot recover password from hash
