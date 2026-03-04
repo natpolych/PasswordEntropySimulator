@@ -1,5 +1,5 @@
 from entropy import entropyCalc, strengthCategory, ShannonEntropy
-from bruteForce import bruteForceTime
+from bruteForce import bruteForceTime, multiSpeedBFA
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
@@ -49,11 +49,26 @@ def graphVisualizer(passwords):
     """
     2. Password Length vs Crack Time
     """
-    lengths = [len(psw) for psw in passwords]
+    lengths = [len(p) for p in passwords]
+    speeds =["Basic Attacker (1e6/sec)", "GPU Attacker (1e9/sec)", "Cluster Attacker (1e12/sec)"]
+    colors = ["#ff9999", "#99ccff", "#99ff99"]
 
-    plt.figure(figsize = (12,5))
-    plt.bar(passwords, crackTime, color = 'pink')
+    timesDictionary = {speed: [] for speed in speeds }
+
+    for p in passwords:
+        times = multiSpeedBFA(p, return_seconds = True)
+        for speed in speeds:
+            timesDictionary[speed].append(times[speed])
+
+    plt.figure(figsize = (12,6))
+    width = 0.25
+    for i, speed in enumerate(speeds):
+        plt.bar([p + width * i - width for p in x], timesDictionary[speed], width = width, color = colors[i], label = speed)
+    
+    plt.xticks(x, passwords, rotation = 45)
     plt.yscale("log") 
     plt.ylabel("Estimated Crack Time (seconds, log scale)")
-    plt.title("Password Length vs Brute-Force Crack Time (1e9 guesses/sec)")
+    plt.title("Password Length vs Brute-Force Crack Time (against all attacker types)")
+    plt.legend()
+    plt.tight_layout()
     plt.show()
