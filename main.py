@@ -1,5 +1,5 @@
 from entropy import ShannonEntropy, entropyCalc, strengthCategory
-from bruteForce import bruteForceTime
+from bruteForce import bruteForceTime, timeConvert
 from visualizer import graphVisualizer
 
 def main():
@@ -24,9 +24,9 @@ def main():
         crackTime = bruteForceTime(userPassword, 1e9)
 
         print(f"Password: {userPassword}")
-        print(f"Theoretical Entropy: {round(theoretical, 2)} bits                                 |       Strength: {strengthCategory(theoretical)}")
-        print(f"Shannon Entropy: {totalEntropy} bits (per character: {entropyPerCharacter})       |       Strength: {strengthCategory(totalEntropy)}")
-        print(f"Estimated Brute-Force Time (1e9 guesses/sec): {timeConvert(crackTime)}")
+        print(f"{'Theoretical Entropy:':<22}{round(theoretical,2):<10}bits  |  "f"{'Strength:':<10}{strengthCategory(theoretical)}")
+        print(f"{'Shannon Entropy:':<22}{totalEntropy:<10}bits  |  "f"{'Strength:':<10}{strengthCategory(totalEntropy)}")
+        print(f"{'Brute-Force Time:':<22}{timeConvert(crackTime)}\n\n")
 
     print("Printing Graph Analysis")
     graphVisualizer(passwords)
