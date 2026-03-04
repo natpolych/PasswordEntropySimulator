@@ -1,5 +1,24 @@
 import math
+from collections import Counter
 import string 
+
+def ShannonEntropy(password):
+    """
+    Calculating Shannon entropy per character and total
+    Returns: entropy per character and total entropy
+    """
+    if not password: return 0, 0
+    
+    length = len(password)
+    freq = Counter(password)
+    entropyPerCharacter = 0
+
+    for count in freq.values():
+        p = count / length
+        entropyPerCharacter -= p * math.log2(p)
+
+    totalEntropy = entropyPerCharacter * length
+    return round(entropyPerCharacter, 2), round(totalEntropy, 2)
 
 def entropyCalc(password):
     """
