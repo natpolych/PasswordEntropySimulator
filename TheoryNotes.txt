@@ -91,3 +91,25 @@ Password Search Space:
 	--> Entropy tells us how many Yes or No questions it would take to guess the password
 
 	==The total number of possible password combinations that an attacker must try during a brute-force attack, calculated as N^L	
+
+
+Secure Hash Algorithm 256-bit (SHA-256):
+	SHA-256 is a cryptographic hash function.
+	
+	1.Input & Padding:
+		-> The algorithm takes an input and breaks it into 512-bit blocks.
+		-> If the input isn't the right size, then it adds padding (=extra bits) to make sure it fits these blocks
+		
+	2.Initial Value:
+		->	In the beginning we have eight "working variables" (=constants derives from the sqrt of the first 8 prime numbers / (2, 3, 5, 7, 11, 13, 17, 19))
+
+	3.The Compression Loop:
+		-> Each 512- bit block goes through 64 rounds of operations. 
+		-> During the rounds the data is mixed, rotated and combined using logical operators (AND, OR, XOR)
+
+	Characteristics:
+	•Deterministic 				| 				The same input produces exactly the same hash
+	•Fixed length				| 				The output is always 256 bits ( = 64 characters )
+	•Fast to Compute			| 				Hash - computationally inexpensive
+	•Pre-image Resistant		| 				Virtually impossible to reverse the input from the hash
+	•Collision Resistant		| 				Impossible for 2 different inputs to produce the same hash
