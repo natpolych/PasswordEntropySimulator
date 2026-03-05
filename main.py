@@ -52,7 +52,7 @@ def main():
         print(f"->Dictionary Attack (for SHA-256)")
         cracked = dictionaryAttack(sha)
 
-        if cracked: print(f"Password Found.\n Recovered Password: {cracked}")
+        if cracked: print(f"Password Found.\nRecovered Password:        {cracked}")
         else: print("Password not found in dictionary")
 
         print("\n")
