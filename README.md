@@ -59,4 +59,4 @@ wordlist.txt
 reports/
 
     1.Stores graph as pdf files
-    2.Stores text reports with password analysis
+    2.Stores text reports with password analysis (example results for password I gave)
