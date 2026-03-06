@@ -2,7 +2,9 @@
 A Python tool that calculates password entropy and simulates brute-force attacks, hashing and dictionary attacks
 
 Code Overview:
+
 (src folder)
+
 main.py
 
     Asks the user to enter passwords.
