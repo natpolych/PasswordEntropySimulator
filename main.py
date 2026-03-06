@@ -52,8 +52,16 @@ def main():
         print(f"->Dictionary Attack (for SHA-256)")
         cracked = dictionaryAttack(sha)
 
-        if cracked: print(f"Password Found.\nRecovered Password:        {cracked}")
-        else: print("Password not found in dictionary")
+        pswFound, attempts, elapsed = dictionaryAttack(sha)
+        if pswFound:
+            print("Password Found!")
+            print(f"Recovered Password:         {pswFound}")
+            print(f"Attempts:                   {attempts}")
+            print(f"Time:                       {elapsed:.4f} seconds")
+        else:
+            print("Password not found")
+            print(f"Attempts:                   {attempts}")
+            print(f"Time:                       {elapsed:.4f} seconds")
 
         print("\n")
         print("-"*50)
