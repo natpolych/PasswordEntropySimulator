@@ -1,17 +1,32 @@
 # PasswordEntropySimulator
-A Python tool that calculates password entropy and simulates brute-force attacks
+A Python tool that calculates password entropy and simulates brute-force attacks, hashing and dictionary attacks
 
--main.py:
+Code Overview:
+(src folder)
+main.py
 
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+    Asks the user to enter passwords.
+    For each password:
+        •Calculates theoretical entropy (entropyCalc) and Shannon entropy (ShannonEntropy)
+        •Determine strength category (strengthCategory) for both theoretical and Shannon entropy
+        •Estimates brute-force attack times for different attacker speeds (multiSpeedBFA)
+        •SHA-256 and bcrypt hashes
+        •Dictionary attack, to see if we can recover a password that has been hashed (SHA-256 hash)
+    Prints above results and calls visualizer (graphVisualizer), that generates 2 graphs.
 
--entropy.py: 
+entropy.py
 
-    Description: Makes sure that the password isn't empty, figures out which character categories are being used (lowercase, uppercase, digits, punctuation), calcualtes theoretical password entropy ( (password length) * log_2(character pool size) ) and classifies password's strength.
+    Measuring password entropy
+        •entropyCalc(password) -> calculates the theoretical entropy, which is based on the password length and character sets(llwercase, uppercase, digits and puncuation) used.
+        •ShannonEntropy(password) -> calculates Shannon entropy, which is based on frequency distribution of characters.
+        •strengthCategory(entropy) -> returns a human readable strength label (Extremely Weak, Very Weak, Weak, OK, Strong, Very Strong)
 
-    How does it work: The character pool depends on which character sets are used in the password (for example: if the password includes at least one uppercase letter then the pool size is 26, if it contains at least one digit then its 10 and if it contains both uppercase and digit, then the pool size iis 26 + 10 = 36 )
-    Then we calculate the entropy, using: (password length) * log_2(character pool size). Higher entropy means higher resistance to brute-force attacks
+bruteForce.py
 
-    Note: entropy.py calculates the theoretical entropy, by making the assumptions that all characters are picked randomly and they all have the same probability of being used, it doesn't detect common passwords, or dictionary words or keyboard patterns
+        •bruteForceTime(password, guessesPerSec) -> estimates the time it would take (based on a given speed) to brute-force a password
+        •multiSpeedBFA(password, return_seconds = False) -> estimates the time for multiple attacker speeds (Basic Attacker - 1e6 guesses/sec, GPU Attacker - 1e9 guesses/sec, Cluser Attacker - 1e12 guesses/sec)
+    Returns time in a human readable form (or in seconds for the graph)
+
+hashDemo.py
+
+
