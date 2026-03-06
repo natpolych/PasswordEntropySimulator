@@ -1,5 +1,6 @@
 import hashlib
 from hashDemo import SHA256Hash
+import time
 
 def dictionaryAttack(targetHash, wordlist = "wordlist.txt"):
     """
@@ -8,19 +9,24 @@ def dictionaryAttack(targetHash, wordlist = "wordlist.txt"):
     Parameters: targetHash (str) -> the hash we are trying to crack 
                 wordlist (str) -> password list of common passwords
 
-    Returns: if we crack the hash then it returns the cracked password, otherwise returns None
+    Returns: if password is found then it returns the password, the attempts and the time elapsed
     """
-
+    attempts = 0
+    startT = time.time()
     try:
         with open(wordlist, "r", encoding = "utf-8", errors = "ignore") as file:
             for word in file:
                 password = word.strip()
+                attempts += 1
                 hashedWord = SHA256Hash(password)
 
                 if hashedWord == targetHash:
-                    return password
+                    elapsed = time.time() - startT
+                    return password, attempts, elapsed
 
     except FileNotFoundError:
         print("Wordlist file not found.")
+        return None, attempts, 0
 
-    return None
+    elapsed = time.time() - startT
+    return None, attempts, elapsed
