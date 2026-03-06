@@ -37,8 +37,8 @@ Time:                       0.0000 seconds
 Password: helloWorld!                                                                                       #analysing second password
 --------------------------------------------------
 ->Entropy Analysis
-Theoretical Entropy:     70.32 bits | Strength:  Strong
-Shannon Entropy:         31.30 bits | Strength:  Weak
+Theoretical Entropy:     70.32 bits | Strength:  Strong                                                     #theoretical entropy is high, because in this password 
+Shannon Entropy:         31.30 bits | Strength:  Weak                                                       #we have lowercase, uppercase and punctuation
 
 ->Brute Force Estimation
 Brute-Force Time Against Basic Attacker (1e6/sec):      46587085.29 years
