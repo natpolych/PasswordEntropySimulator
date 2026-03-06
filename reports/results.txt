@@ -1,0 +1,126 @@
+====================================================================================================
+|                                     PASSWORD SECURITY SIMULATOR                                  |
+====================================================================================================
+Enter passwords (Write password and press Enter. To finish press Enter on empty input)                      #asks user for passwords
+>>12345                                                                                                     #passwords given by user
+>>helloWorld!
+>>1!2@3#4$5%
+>>yt08g]=fej               
+>>password
+>>
+====================================================================================================
+|                                          PASSWORD ANALYSIS                                       |
+====================================================================================================
+Password: 12345                                                                                             #analysing first password
+--------------------------------------------------
+->Entropy Analysis
+Theoretical Entropy:     16.61 bits | Strength:  Extremely Weak
+Shannon Entropy:         11.61 bits | Strength:  Extremely Weak
+
+->Brute Force Estimation
+Brute-Force Time Against Basic Attacker (1e6/sec):      0.10 seconds
+Brute-Force Time Against GPU Attacker (1e9/sec):        0.00 seconds
+Brute-Force Time Against Cluster Attacker (1e12/sec):   0.00 seconds
+
+->Hashing
+SHA-256:    5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5
+bcrypt:     $2b$12$j6szRVYdsWm1AqEND5gzOerIqZqepO3tXNPt0FcrxvS9BhMOzW2.O
+
+->Dictionary Attack (for SHA-256)
+Password Found!                                                                                             #password was found in wordlist.txt
+Recovered Password:         12345
+Attempts:                   1
+Time:                       0.0000 seconds
+
+
+--------------------------------------------------
+Password: helloWorld!                                                                                       #analysing second password
+--------------------------------------------------
+->Entropy Analysis
+Theoretical Entropy:     70.32 bits | Strength:  Strong
+Shannon Entropy:         31.30 bits | Strength:  Weak
+
+->Brute Force Estimation
+Brute-Force Time Against Basic Attacker (1e6/sec):      46587085.29 years
+Brute-Force Time Against GPU Attacker (1e9/sec):        46587.09 years
+Brute-Force Time Against Cluster Attacker (1e12/sec):   46.59 years
+
+->Hashing
+SHA-256:    759725001aee57b4cbf50c83173d7e7ef36970af51b393bee2e66170af6d5101
+bcrypt:     $2b$12$Xyf15UugQmtq1yASSJRpIekfNjoz9Zv.hswt/PdiJqkXaGe.vAGae
+
+->Dictionary Attack (for SHA-256)
+Password not found                                                                                         #password wasn't found 
+Attempts:                   186
+Time:                       0.0001 seconds
+
+
+--------------------------------------------------
+Password: 1!2@3#4$5%                                                                                       #analysing 3rd password
+--------------------------------------------------  
+->Entropy Analysis
+Theoretical Entropy:     53.92 bits | Strength:  OK
+Shannon Entropy:         33.22 bits | Strength:  Weak
+
+->Brute Force Estimation
+Brute-Force Time Against Basic Attacker (1e6/sec):      541.61 years
+Brute-Force Time Against GPU Attacker (1e9/sec):        197.69 days
+Brute-Force Time Against Cluster Attacker (1e12/sec):   4.74 hours
+
+->Hashing
+SHA-256:    e458fa44f126ab2c97a7b61bad25a3165368ef188ece750b1ba46f70dcd8dceb
+bcrypt:     $2b$12$JJwVUNJYETNnYJV.bRLMIeX9xNLIrVIX/5uxu8/sE6UYdpKrA6JMO
+
+->Dictionary Attack (for SHA-256)
+Password not found                                                                                          #password wasn't found
+Attempts:                   186
+Time:                       0.0001 seconds
+
+
+--------------------------------------------------
+Password: yt08g]=fej                                                                                        #analysing 4th password
+--------------------------------------------------
+->Entropy Analysis
+Theoretical Entropy:     60.87 bits | Strength:  Strong
+Shannon Entropy:         33.22 bits | Strength:  Weak
+
+->Brute Force Estimation
+Brute-Force Time Against Basic Attacker (1e6/sec):      67032.05 years
+Brute-Force Time Against GPU Attacker (1e9/sec):        67.03 years
+Brute-Force Time Against Cluster Attacker (1e12/sec):   24.47 days
+
+->Hashing
+SHA-256:    f3f4388904009c9cbf766ba9f581cc9a2bcddcda7a0b865363badfd70e3f3d2b
+bcrypt:     $2b$12$8mvCb5MT/c46skwBMVfEaeDl9MNMBbbIJN.vTGdFQEtwvmcNRRrzO
+
+->Dictionary Attack (for SHA-256)
+Password not found                                                                                          #password wasn't found
+Attempts:                   186
+Time:                       0.0001 seconds
+
+
+--------------------------------------------------
+Password: password                                                                                          #analysing 5th password
+--------------------------------------------------
+->Entropy Analysis
+Theoretical Entropy:     37.60 bits | Strength:  Weak
+Shannon Entropy:         22.00 bits | Strength:  Very Weak
+
+->Brute Force Estimation
+Brute-Force Time Against Basic Attacker (1e6/sec):      2.42 days
+Brute-Force Time Against GPU Attacker (1e9/sec):        3.48 minutes
+Brute-Force Time Against Cluster Attacker (1e12/sec):   0.21 seconds
+
+->Hashing
+SHA-256:    5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8
+bcrypt:     $2b$12$Lg0w7kpBvFiAQvzYZ5e4mOfCNAAARrccaAKZT3iVSuzLeqP3nmEj.
+
+->Dictionary Attack (for SHA-256)   
+Password Found!                                                                                             #password was found in wordlist.txt
+Recovered Password:         password
+Attempts:                   5
+Time:                       0.0000 seconds
+
+
+--------------------------------------------------
+Printing Graph Analysis - Check reports/ for results
