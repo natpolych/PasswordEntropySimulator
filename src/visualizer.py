@@ -44,7 +44,7 @@ def graphVisualizer(passwords):
     
     plt.legend(handles = plt.gca().get_legend_handles_labels()[0] + [strengthLegent])
     plt.tight_layout()
-    plt.show()
+    plt.savefig("../reports/entropyComparison.pdf")
 
     """
     2. Password Length vs Crack Time
@@ -71,4 +71,4 @@ def graphVisualizer(passwords):
     plt.title("Password Length vs Brute-Force Crack Time (against all attacker types)")
     plt.legend()
     plt.tight_layout()
-    plt.show()
+    plt.savefig("../reports/bruteforceTimes.pdf")

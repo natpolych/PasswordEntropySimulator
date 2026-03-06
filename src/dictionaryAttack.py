@@ -2,7 +2,7 @@ import hashlib
 from hashDemo import SHA256Hash
 import time
 
-def dictionaryAttack(targetHash, wordlist = "wordlist.txt"):
+def dictionaryAttack(targetHash, wordlist = "../data/wordlist.txt"):
     """
     Trying to crack a hash by using dictionary attack
 
