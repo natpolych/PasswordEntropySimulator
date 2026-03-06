@@ -66,7 +66,7 @@ def main():
         print("\n")
         print("-"*50)
 
-    print("Printing Graph Analysis")
+    print("Printing Graph Analysis - Check reports/ for results")
     graphVisualizer(passwords)
 
 if __name__ == "__main__":
